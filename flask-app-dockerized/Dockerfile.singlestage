@@ -1,0 +1,19 @@
+# Stage 1: Build Stage Full
+FROM python:3.9 
+
+# Set the working directory
+WORKDIR /app
+
+COPY requirements.txt .
+
+# Install Flask
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all files (.) to the container directory (/app or .)
+COPY . .
+
+#Expose port 5000
+EXPOSE 5000
+
+#run the app with python command
+CMD [ "python", "app.py" ]
